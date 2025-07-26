@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./cartask.css"/> -->
+    <style>
+        .parent {
+            height: 100%;
+            width: 100%;
+            background-color: green;
+            animation: parentanim 10s linear infinite;
+        }
+
+        @keyframes parentanim {
+            from {
+                background-color: green;
+            }
+
+            to {
+                background-color: rgb(0, 39, 0);
+            }
+        }
+
+        .background {
+            border: 2px;
+            width: 100%;
+            height: 500px;
+            background-image: linear-gradient(to bottom, rgb(135, 203, 230), rgb(255, 255, 255));
+            position: relative;
+            animation-name: bganim;
+            animation-duration: 10s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            transition: background-image 10s ease-in-out;
+        }
+
+        .background:hover {
+            background-image: linear-gradient(to bottom, rgb(111, 119, 120), rgb(102, 134, 132));
+        }
+        @keyframes bganim {
+            /* 0% {
+                background-image: linear-gradient(to bottom, skyblue, white);
+            }
+
+            50% {
+                background-image: linear-gradient(to bottom, rgb(111, 119, 120), rgb(102, 134, 132), rgb(117, 166, 164));
+            }
+
+            75% {
+                background-image: linear-gradient(to bottom, rgb(12, 12, 12), rgb(16, 16, 16), rgb(20, 20, 20));
+            }
+
+            100% {
+                background-image: linear-gradient(to bottom, black, rgb(16, 16, 16));
+            } */
+        }
+
+        .sun {
+            height: 100px;
+            width: 100px;
+            background-color: rgb(255, 98, 0);
+            box-shadow: 0px 0px 45px 5px rgb(255, 178, 150);
+            position: relative;
+            left: 70%;
+            top: 100px;
+            border-radius: 50%;
+            animation: sunanim 10s ease infinite;
+        }
+
+        @keyframes sunanim {
+            0% {
+                background-color: rgb(255, 98, 0);
+                box-shadow: 0px 0px 45px 5px rgb(255, 178, 150);
+            }
+
+            50% {
+                background-color: rgb(159, 159, 159);
+                ox-shadow: 0px 0px 45px 5px white;
+            }
+
+            100% {
+                background-color: white;
+                ox-shadow: 0px 0px 45px 5px white;
+            }
+        }
+
+        .treestem1 {
+            height: 150px;
+            width: 50px;
+            background-color: rgb(134, 60, 8);
+            position: absolute;
+            bottom: 0px;
+            left: 190px;
+        }
+
+        .leaf11 {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: green;
+            position: absolute;
+            left: 110px;
+            bottom: 120px;
+            animation: leafanim 10s linear infinite;
+        }
+
+        .leaf12 {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: green;
+            position: absolute;
+            left: 220px;
+            bottom: 120px;
+            animation: leafanim 10s linear infinite;
+        }
+
+        .leaf13 {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            background-color: green;
+            position: absolute;
+            left: 135px;
+            bottom: 100px;
+            animation: leafanim 10s linear infinite;
+        }
+
+        .leaf14 {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: green;
+            position: absolute;
+            left: 135px;
+            bottom: 150px;
+            animation: leafanim 10s linear infinite;
+        }
+
+        .treestem2 {
+            height: 150px;
+            width: 50px;
+            background-color: rgb(134, 60, 8);
+            position: absolute;
+            bottom: 0px;
+            left: 380px;
+        }
+
+        .leaf21 {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: green;
+            position: absolute;
+            left: 310px;
+            bottom: 120px;
+            animation: leafanim 10s linear infinite;
+        }
+
+        .leaf22 {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: green;
+            position: absolute;
+            left: 420px;
+            bottom: 120px;
+            animation: leafanim 10s linear infinite;
+        }
+
+        .leaf23 {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            background-color: green;
+            position: absolute;
+            left: 335px;
+            bottom: 100px;
+            animation: leafanim 10s linear infinite;
+        }
+
+        .leaf24 {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: green;
+            position: absolute;
+            left: 335px;
+            bottom: 150px;
+            animation: leafanim 10s linear infinite;
+        }
+
+        @keyframes leafanim {
+            from {
+                background-color: green;
+            }
+
+            to {
+                background-color: darkgreen;
+            }
+        }
+
+        .road {
+            border: 2px;
+            width: 100%;
+            height: 200px;
+            background-color: black;
+            position: relative;
+            top: 50px;
+        }
+
+        .strip0 {
+            height: 30px;
+            width: 140px;
+            background-color: white;
+            position: absolute;
+            top: 85px;
+            left: 10px;
+        }
+
+        .strip1 {
+            height: 30px;
+            width: 150px;
+            background-color: white;
+            position: absolute;
+            left: 200px;
+            top: 85px;
+
+        }
+
+        .strip2 {
+            height: 30px;
+            width: 150px;
+            background-color: white;
+            position: absolute;
+            left: 400px;
+            top: 85px;
+        }
+
+        .strip3 {
+            height: 30px;
+            width: 150px;
+            background-color: white;
+            position: absolute;
+            left: 600px;
+            top: 85px;
+        }
+
+        .strip4 {
+            height: 30px;
+            width: 150px;
+            background-color: white;
+            position: absolute;
+            left: 800px;
+            top: 85px;
+        }
+
+        .strip5 {
+            height: 30px;
+            width: 150px;
+            background-color: white;
+            position: absolute;
+            left: 1000px;
+            top: 85px;
+        }
+
+        .strip6 {
+            height: 30px;
+            width: 150px;
+            background-color: white;
+            position: absolute;
+            left: 1200px;
+            top: 85px;
+        }
+
+        .carpart1 {
+            width: 300px;
+            height: 110px;
+            position: absolute;
+            bottom: 120px;
+            right: 40px;
+            background-color: rgb(255, 38, 4);
+            z-index: 1;
+        }
+
+        .carpart2 {
+            background-color: rgb(255, 38, 14);
+            height: 80px;
+            width: 150px;
+            border-top-left-radius: 15px;
+            border-bottom: 250px;
+            position: absolute;
+            bottom: 230px;
+            right: 190px;
+        }
+
+        .glass {
+            height: 60px;
+            width: 125px;
+            background-color: gray;
+            position: absolute;
+            margin: 12px;
+        }
+
+        .wheel1 {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            background-color: rgb(58, 52, 52);
+            position: absolute;
+            bottom: 85px;
+            right: 220px;
+            z-index: 2;
+        }
+
+        .wheel2 {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            background-color: rgb(58, 52, 52);
+            position: absolute;
+            bottom: 85px;
+            right: 80px;
+            z-index: 3;
+        }
+
+        .car {
+            height: 300px;
+            width: 300px;
+            position: absolute;
+            right: 20px;
+            bottom: 1px;
+            animation-name: caranimation;
+            animation-timing-function: linear;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes caranimation {
+            from {
+                right: -300px;
+            }
+
+            to {
+                right: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="background">
+            <div class="sun"></div>
+            <div class="treestem1"></div>
+            <div class="leaf11"></div>
+            <div class="leaf12"></div>
+            <div class="leaf13"></div>
+            <div class="leaf14"></div>
+            <div class="treestem2"></div>
+            <div class="leaf21"></div>
+            <div class="leaf22"></div>
+            <div class="leaf23"></div>
+            <div class="leaf24"></div>
+        </div>
+        <div class="road">
+            <div class="car">
+                <div class="carpart1"></div>
+                <div class="carpart2">
+                    <div class="glass"></div>
+                </div>
+                <div class="wheel1"></div>
+                <div class="wheel2"></div>
+            </div>
+            <div class="strip0"></div>
+            <div class="strip1"></div>
+            <div class="strip2"></div>
+            <div class="strip3"></div>
+            <div class="strip4"></div>
+            <div class="strip5"></div>
+            <div class="strip6"></div>
+        </div>
+    </div>
+</body>
+
+</html>

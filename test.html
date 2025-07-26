@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Product Upload</title>
+</head>
+
+<body>
+    <h2>Upload Product</h2>
+    <form id="productForm" enctype="multipart/form-data">
+        <label>Name: <input type="text" name="name" required></label><br>
+        <label>Description: <input type="text" name="description" required></label><br>
+        <label>Size Chart (PDF/Image): <input type="file" name="sizechart" accept=".jpg,.png,.jpeg,.pdf"
+                required></label><br>
+        <label>Gender: <input type="text" name="gender" required></label><br>
+        <label>Brand: <input type="text" name="brand" required></label><br>
+        <label>Price: <input type="number" name="price" required></label><br>
+        <label>Discount: <input type="number" name="discount" required></label><br>
+        <label>Category ID: <input type="text" name="category_id" required></label><br>
+        <label>Tags (comma-separated IDs): <input type="text" name="tags_id" required></label><br>
+        <label>Color: <input type="text" name="color" required></label><br>
+        <label>Main Image: <input type="file" name="mainimage" accept=".jpg,.png,.jpeg,.pdf" required></label><br>
+        <label>Images (multiple): <input type="file" name="images" multiple accept=".jpg,.png,.jpeg"
+                required></label><br>
+        <label>Fabric (comma-separated): <input type="text" name="fabric"></label><br>
+        <label>Deal of the Day:
+            <select name="Dealoftheday" required>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </label><br>
+        <label>Deal Discount: <input type="number" name="dealdiscount"></label><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <pre id="response"></pre>
+
+    <script>
+        document.getElementById('productForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData();
+
+            // Collect all form fields manually to handle array fields correctly
+            formData.append('name', form.name.value);
+            formData.append('description', form.description.value);
+            formData.append('gender', form.gender.value);
+            formData.append('brand', form.brand.value);
+            formData.append('price', form.price.value);
+            formData.append('discount', form.discount.value);
+            formData.append('category_id', form.category_id.value);
+            formData.append('color', form.color.value);
+            formData.append('Dealoftheday', form.Dealoftheday.value);
+            formData.append('dealdiscount', form.dealdiscount.value);
+
+            // File: sizechart
+            formData.append('sizechart', form.sizechart.files[0]);
+            formData.append('mainimage', form.mainimage.files[0]);
+
+            formData.set("sizecount", JSON.stringify({
+                "s": 10,
+                "m": 10,
+                "l": 10,
+                "xl": 10,
+                "xxl": 10,
+                "xxxl": 10
+            }))
+
+            // Files: images[]
+            for (let i = 0; i < form.images.files.length; i++) {
+                formData.append('images', form.images.files[i]);
+            }
+
+            // Arrays: tags_id[]
+            form.tags_id.value.split(',').map(s => s.trim()).forEach(tag => {
+                formData.append('tags_id', tag);
+            });
+
+            // Arrays: fabric[]
+            if (form.fabric.value) {
+                form.fabric.value.split(',').map(s => s.trim()).forEach(fab => {
+                    formData.append('fabric', fab);
+                });
+            }
+
+            try {
+                const response = await fetch('http://10.16.57.78:9000/api/add-product', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const result = await response.json();
+                document.getElementById('response').textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                document.getElementById('response').textContent = 'Error: ' + error.message;
+            }
+        });
+    </script>
+
+
+    <!-- <script>
+        document.getElementById('productForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+
+            // Convert string lists to arrays
+            formData.set('tags_id', formData.get('tags_id').split(',').map(s => s.trim()));
+            if (formData.get('fabric')) {
+                formData.set('fabric', formData.get('fabric').split(',').map(s => s.trim()));
+            }
+
+            formData.set("sizecount", {
+                "s": 10,
+                "m": 10,
+                "l": 10,
+                "xl": 10,
+                "xxl": 10,
+                "xxxl": 10
+            })
+
+            try {
+                const response = await fetch('http://10.16.57.78:9000/api/add-product', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const result = await response.json();
+                document.getElementById('response').textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                document.getElementById('response').textContent = 'Error: ' + error.message;
+            }
+        });
+    </script> -->
+</body>
+
+</html>
